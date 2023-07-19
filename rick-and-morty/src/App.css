@@ -1,0 +1,30 @@
+h1 {
+  text-align: center;
+  margin: 20px auto;
+  font-family: "Tektur", cursive;
+  color: #a8c900;
+}
+.containing-input {
+  text-align: center;
+}
+input {
+  padding: 10px 20px;
+  font-size: 20px;
+  font-family: "Ubuntu", sans-serif;
+}
+.post-container {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+}
+.postCard {
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  margin: 10px;
+  list-style-type: none;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  transition: all 0.2s ease-in-out;
+}
+.postCard:hover {
+  transform: scale(1.1);
+}
