@@ -1,3 +1,6 @@
+// I think this apporach is taken from Youtube
+
+
 import { useState, useEffect } from "react";
 import "./App.css";
 // Fetching the API using the
@@ -5,15 +8,19 @@ import "./App.css";
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [pages, setPages] = useState([]);
+  // this is not doing anything
+
+  //    isLoaded is not doing anythign
   const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [query, setQuery] = useState("");
+
+  // what is this
   const [searchParam] = useState(["name"]);
 
   useEffect(() => {
     for (let i = 1; i <= 42; i++) {
-      const { data } = fetch(
+      fetch(
         `https://rickandmortyapi.com/api/character/?name=${query}&page=${i}`
       )
         .then((res) => res.json())
@@ -28,7 +35,7 @@ function App() {
           }
         );
     }
-  }, []);
+  },);
 
   const data = Object.values(posts);
 
@@ -49,18 +56,22 @@ function App() {
         <input
           type="text"
           name=""
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={ query }
+          onChange={ (e) => setQuery(e.target.value) }
         />
       </div>
-      <ul className="post-container">
-        {Search(data).map((post) => (
-          <li className="postCard">
-            <img src={post.image} alt={post.name} />
-            <p>{post.name}</p>
-          </li>
-        ))}
-      </ul>
+      { (isLoaded) && (
+        <ul className="post-container">
+          { Search(data).map((post) => (
+            <li className="postCard">
+              <img src={ post.image } alt={ post.name } />
+              <p>{ post.name }</p>
+            </li>
+          )) }
+        </ul>
+
+      ) }
+
     </div>
   );
 }
